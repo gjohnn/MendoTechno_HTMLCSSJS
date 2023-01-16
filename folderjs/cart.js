@@ -1,6 +1,21 @@
-
+//num al lado del carrito
+const cartamount = document.querySelector(".cartamount");
 
 function addtocart(id){
+    Toastify({
+        text: "Producto agregado",
+        duration: 1400,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+            background: "rgb(71, 1, 192)",
+        },
+        onClick: function(){} // Callback after click
+    }).showToast();
     const item = prodarray.find((prod) =>prod.id === id)
     cart.push(item)
     showcart();
@@ -12,9 +27,10 @@ function elimprod(id){
     console.log(cart);
 }
 
+//pintar cart
+
 const showcart = ()=>{
     const modalbody = document.querySelector(".modal .modal-body")
-    
     modalbody.innerHTML = ""
     cart.forEach((prod)=>{
         let cant = 1;
@@ -40,5 +56,45 @@ const showcart = ()=>{
         </div>
         `
     })
+    if (cart.length === 0 ){
+        modalbody.innerHTML = `<p class="text-center">Nada por aquí...</p>`
+    }
+    preciofinal = cart.reduce((acc,prod)=>{
+        acc + cant * prod.precio, 0})
+    
+    cartamount.textContent = cart.length
     guardarcart();
 }
+
+//vaciar cart
+const vaciarcart = document.querySelector("#vaciarcart")
+vaciarcart.addEventListener("click", ()=>{
+    cart.length = []
+    showcart();
+})
+
+//sumar precios
+const preciofinal = document.querySelector("#pretotal")
+
+const finalcompra = document.querySelector("#finalizarcompra")
+
+finalcompra.addEventListener("click",()=>{
+    if(cart.length >=1){
+    swal({
+        title: "Compra realizada!",
+        text: "Gracias por su confianza!",
+        icon: "success",
+        button: "Cerrar",
+      });
+    cart.length = []
+    showcart();
+    }else{
+        swal({
+            title: "Oh no!",
+            text: "No hay productos en el carrito...",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+    }
+})
