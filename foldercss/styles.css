@@ -1,0 +1,97 @@
+header {
+  background-color: black;
+  color: white; }
+
+.headerr {
+  display: flex;
+  background: none;
+  justify-content: space-around; }
+  .headerr .logo {
+    display: flex; }
+    .headerr .logo a {
+      display: flex; }
+      .headerr .logo a .logo-ico {
+        justify-content: center;
+        align-items: center;
+        width: 60px; }
+      .headerr .logo a .logo-nom {
+        justify-content: center;
+        align-items: center; }
+  .headerr .navv {
+    background: black; }
+
+section {
+  font-family: Orbitron, sans-serif;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; }
+
+article {
+  background: none;
+  position: relative;
+  margin: 0.5rem;
+  height: 370px;
+  width: 250px;
+  text-align: center;
+  justify-content: center;
+  border-style: solid;
+  border-color: black;
+  overflow: hidden;
+  transition: border 0.25s; }
+  article:hover {
+    border-color: blue; }
+  article .card__imgcontainer_prod {
+    justify-content: center;
+    width: auto;
+    height: 200px;
+    margin: 10px 3px 3px 3px;
+    overflow: hidden; }
+    article .card__imgcontainer_prod .card__img__prod {
+      height: 200px;
+      padding: 10px;
+      width: auto;
+      border-radius: 10px; }
+  article .card__text {
+    background-color: #000000;
+    margin: 0px;
+    height: 144px; }
+    article .card__text .card__text__prod {
+      background: none;
+      text-align: center;
+      justify-content: center;
+      margin: 10px 5px 5px 5px;
+      width: auto;
+      height: 70px;
+      color: white; }
+    article .card__text .card__price__prod {
+      color: white;
+      background: none;
+      text-align: left;
+      position: absolute;
+      font-size: 1.2rem;
+      bottom: 30px;
+      left: 0.5rem;
+      width: fit-content; }
+    article .card__text .card__cart__prod {
+      position: absolute;
+      color: white;
+      bottom: 30px;
+      right: 20px; }
+
+.cart-prod {
+  border: 2px solid black;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2px; }
+  .cart-prod .cart-contimg {
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    margin: 5px; }
+    .cart-prod .cart-contimg-img {
+      height: 150px;
+      padding: 0px;
+      width: auto;
+      border-radius: 10px; }

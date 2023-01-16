@@ -1,0 +1,28 @@
+header {
+    background-color: black;
+    color: white;
+}
+
+.headerr {
+    display: flex;
+    background: none;
+    justify-content: space-around;
+    .logo {
+        display: flex;
+        a{display: flex;
+            .logo-ico {
+                justify-content: center;
+                align-items: center;
+                width: 60px;
+            }
+            .logo-nom{
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+    .navv{
+        background:black;
+    }
+
+}
