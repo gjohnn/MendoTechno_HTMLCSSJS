@@ -18,6 +18,10 @@ function show(msj) {
 }
 
 let cart = []
+document.addEventListener("DOMContentLoaded",()=>{
+    cart = JSON.parse(localStorage.getItem("cart"))||[]
+    showcart();
+})
 
 
 const prodarray = [];
@@ -53,7 +57,7 @@ let prodarraygpu = prodarray.filter(item => item.cat == "GPU");
 let prodarrayram = prodarray.filter(item => item.cat == "MEMORIA RAM");
 let prodarraymother = prodarray.filter(item => item.cat == "MOTHERBOARD");
 
-function GuardarLS(){
-localStorage.setItem("Producto", JSON.stringify(prodarray))
+function guardarcart(){
+localStorage.setItem("cart", JSON.stringify(cart))
 }
 

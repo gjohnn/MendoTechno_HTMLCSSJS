@@ -40,4 +40,5 @@ const showcart = ()=>{
         </div>
         `
     })
+    guardarcart();
 }

@@ -12,7 +12,7 @@ contentsectioncard.innerHTML = `
 <div class="card__text__prod">${nombre}</div>
 <div class="card__price__prod">$${precio}</div>
 <div class="card__cart__prod">
-<button onclick="addtocart(${id})">A</button></div>
+<button onclick="addtocart(${id})" class="bg-black"><img  src="../prod/icon-shopping-cart-prod.png"></button></div>
 </div>
 `
 })
