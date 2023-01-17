@@ -1,7 +1,6 @@
-//num al lado del carrito
-const cartamount = document.querySelector(".cartamount");
+//al cart
 
-function addtocart(id){
+function addtocart(id) {
     Toastify({
         text: "Producto agregado",
         duration: 1400,
@@ -14,87 +13,129 @@ function addtocart(id){
         style: {
             background: "rgb(71, 1, 192)",
         },
-        onClick: function(){} // Callback after click
+        onClick: function () { } // Callback after click
     }).showToast();
-    const item = prodarray.find((prod) =>prod.id === id)
-    cart.push(item)
+    const yaexiste = cart.some(prod => prod.id === id)
+    if (yaexiste == true) {
+        const prod = cart.map(prod => {
+            if (prod.id === id) {
+                prod.cant++
+            }
+        })
+    } else {
+        const item = prodarray.find((prod) => prod.id === id)
+        cart.push(item)
+    }
     showcart();
 }
-function elimprod(id){
+//eliminar prod
+function elimprod(id) {
     const prodID = id;
-    cart = cart.filter((prod)=>prod.id !== prodID)
+    cart = cart.filter((prod) => prod.id !== prodID)
     showcart();
     console.log(cart);
 }
 
+function sumarcant(id) {
+    const prod = cart.map(prod => {
+        if (prod.id === id) {
+            prod.cant++
+        }
+    })
+    showcart();
+}
+//restar cant
+function restarcant(id) {
+    const prod = cart.map(prod => {
+        if (prod.id === id) {
+            if (prod.cant >1){
+                prod.cant--
+            }else{
+                prod.cant = 1
+            }
+        }
+    })
+    showcart();
+}
+
+
+
 //pintar cart
 
-const showcart = ()=>{
+const showcart = () => {
     const modalbody = document.querySelector(".modal .modal-body")
     modalbody.innerHTML = ""
-    cart.forEach((prod)=>{
-        let cant = 1;
-        const { id, marca, nombre, cat, precio, prodimage} = prod
-        modalbody.innerHTML +=`
+    cart.forEach((prod) => {
+        const { id, marca, nombre, cat, precio, prodimage, cant } = prod
+        modalbody.innerHTML += `
         <div class="cart-prod d-flex">
-            <figure class="cart-contimg img-fluid">
-                <img class="cart-contimg-img" src="${prodimage}">
-            </figure>
-            <div>
-            <p class="m-0">${cat}</p>
-                <p class="m-0">${marca}</p>
-                <p class="m-0">${nombre}</p>
-                <p class="m-0">Cantidad: ${cant}</p>
-                <p class="m-0">$${cant*precio}</p>
-            </div>
-            <div class="botonescart">
-            <button type="button" class="btn btn-success">+</button>
-            <button type="button" class="btn btn-danger">-</button>
-            <button type="button" onclick="elimprod(${id})" class="btn btn-warning">Eliminar</button>
-            </div>
-
+        <figure class="cart-contimg img-fluid">
+        <img class="cart-contimg-img" src="${prodimage}">
+        </figure>
+        <div>
+        <p class="m-0">${cat}</p>
+        <p class="m-0">${marca}</p>
+        <p class="m-0">${nombre}</p>
+        <p class="m-0">Cantidad: ${cant}</p>
+        <p class="m-0">$${cant * precio}</p>
+        </div>
+        <div class="botonescart">
+        <button type="button" onclick="sumarcant(${id})" class="btn btn-success">+</button>
+        <button type="button" onclick="restarcant(${id})" class="btn btn-danger">-</button>
+        <button type="button" onclick="elimprod(${id})" class="btn btn-warning">Eliminar</button>
+        </div>
+        
         </div>
         `
     })
-    if (cart.length === 0 ){
+
+    //mostrar vacio
+    cartamount.textContent = cart.length;
+    if (cart.length === 0) {
         modalbody.innerHTML = `<p class="text-center">Nada por aquí...</p>`
     }
-    preciofinal = cart.reduce((acc,prod)=>{
-        acc + cant * prod.precio, 0})
-    
-    cartamount.textContent = cart.length
+    //sumar precios
+    preciofinal.textContent =  `Precio total: $`+cart.reduce((acc, prod) =>
+        acc + prod.cant * prod.precio, 0)
+
+
+
     guardarcart();
 }
+//sumar cant
 
+
+
+//sumar num carrito
+const cartamount = document.querySelector(".cartamount");
 //vaciar cart
 const vaciarcart = document.querySelector("#vaciarcart")
-vaciarcart.addEventListener("click", ()=>{
+vaciarcart.addEventListener("click", () => {
     cart.length = []
     showcart();
 })
 
-//sumar precios
-const preciofinal = document.querySelector("#pretotal")
-
+//sumar precios const para function
+const preciofinal = document.querySelector("#pretotal");
+//btn comprar en cart
 const finalcompra = document.querySelector("#finalizarcompra")
-
-finalcompra.addEventListener("click",()=>{
-    if(cart.length >=1){
-    swal({
-        title: "Compra realizada!",
-        text: "Gracias por su confianza!",
-        icon: "success",
-        button: "Cerrar",
-      });
-    cart.length = []
-    showcart();
-    }else{
+finalcompra.addEventListener("click", () => {
+    if (cart.length >= 1) {
         swal({
-            title: "Oh no!",
-            text: "No hay productos en el carrito...",
-            icon: "warning",
+            title: "Compra realizada!",
+            text: "Gracias por su confianza!",
+            icon: "success",
+            button: "Cerrar",
+        });
+        cart.length = []
+        showcart();
+    } else {
+        swal({
+            title: "¡No hay productos en tu carrito!",
+            text: "Esperamos tu compra",
+            icon: "error",
             buttons: true,
             dangerMode: true,
-          })
+        })
     }
 })
