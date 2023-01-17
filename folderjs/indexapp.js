@@ -6,7 +6,7 @@ let contentsectioncard = document.createElement("ARTICLE")
 prodcard.appendChild(contentsectioncard);
 contentsectioncard.innerHTML = `
 <div class="card__imgcontainer_prod">
-<img class="card__img__prod" src="${prodimage}">
+<img class="card__img__prod" src="./prod/prodimg/${prodimage}">
 </div>
 <div class="card__text">
 <div class="card__text__prod">${nombre}</div>

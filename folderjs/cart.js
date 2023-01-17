@@ -70,7 +70,7 @@ const showcart = () => {
         modalbody.innerHTML += `
         <div class="cart-prod d-flex">
         <figure class="cart-contimg img-fluid">
-        <img class="cart-contimg-img" src="${prodimage}">
+        <img class="cart-contimg-img" src="./prod/prodimg/${prodimage}">
         </figure>
         <div>
         <p class="m-0">${cat}</p>
