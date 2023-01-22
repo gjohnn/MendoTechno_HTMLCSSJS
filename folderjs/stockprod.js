@@ -54,9 +54,9 @@ prod11.pushto();
 const prod12 = new Producto(12, "MSI", "Radeon RX 6600 XT MECH 2X 8G OC", "GPU", 100000, "prod12.png", 1);
 prod12.pushto();
 
-let prodarraygpu = prodarray.filter(item => item.cat == "GPU");
-let prodarrayram = prodarray.filter(item => item.cat == "MEMORIA RAM");
 let prodarraymother = prodarray.filter(item => item.cat == "MOTHERBOARD");
+let prodarrayram = prodarray.filter(item => item.cat == "MEMORIA RAM");
+let prodarraygpu = prodarray.filter(item => item.cat == "GPU");
 
 function guardarcart(){
 localStorage.setItem("cart", JSON.stringify(cart))

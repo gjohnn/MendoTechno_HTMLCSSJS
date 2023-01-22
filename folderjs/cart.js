@@ -8,8 +8,8 @@ function addtocart(id) {
         newWindow: true,
         close: true,
         gravity: "top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
+        position: "left", // `left`, `center` or `right`
+        stopOnFocus: false, // Prevents dismissing of toast on hover
         style: {
             background: "rgb(71, 1, 192)",
         },
@@ -80,9 +80,11 @@ const showcart = () => {
         <p class="m-0">$${cant * precio}</p>
         </div>
         <div class="botonescart">
-        <button type="button" onclick="sumarcant(${id})" class="btn btn-success">+</button>
-        <button type="button" onclick="restarcant(${id})" class="btn btn-danger">-</button>
-        <button type="button" onclick="elimprod(${id})" class="btn btn-warning">Eliminar</button>
+        <div class="masymenos">
+        <button type="button" onclick="sumarcant(${id})" class="btn btn-outline-success m-1">+</button>
+        <button type="button" onclick="restarcant(${id})" class="btn btn-outline-danger m-1">-</button>
+        </div>
+        <button type="button" onclick="elimprod(${id})" class="btn btn-outline-warning text-black">Eliminar</button>
         </div>
         
         </div>

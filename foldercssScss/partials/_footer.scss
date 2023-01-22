@@ -1,0 +1,107 @@
+.footer *{
+    padding: 10px 0px;
+    background-color: #212529;
+    font-family: 'Poppins', sans-serif;
+}
+
+.roww{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.container{
+    padding: 0; 
+}
+
+
+.footer{
+    background-color: #212529;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    ul{
+        list-style: none;
+    }
+    &-col{
+        color: white;
+        margin: 0px;
+        padding: 0rem;
+        background-color:none;
+        display:inline-block;
+        width: auto;
+            ul{
+                padding:0px;
+                margin:0px;
+            }
+            li{
+                padding:0rem;
+                margin: 0;
+                color:grey;
+                transition: all 0.5s;
+            }
+            li:hover{
+                padding-left: 1px;
+                color: white;
+            }
+            a{
+                margin:0;
+                padding: 0;
+                text-decoration: none;
+                color:grey;
+                transition: all 0.5s;
+            }
+            a:hover{
+                color: white;
+            }
+            h4{
+                font-size: 18px;
+                color: white;
+                font-weight: 500;
+                margin-bottom: 15px;
+                position: relative;
+                padding: 10px 0px 10px 0px;
+                text-align: start;
+                text-transform: capitalize;
+                border-bottom: solid white 2px;
+            }
+                .social-links{
+                    padding:0px;
+                    ul{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                    }
+                    a{
+                        height: 40px;
+                        width: 40px;
+                        text-align: center;
+                        display: inline-block;
+                        background-color:grey;
+                        margin-right: 10px;
+                        color:white;
+                        border-radius: 50%;
+                        text-align: center;
+                        line-height: 40px;
+                        transition: all 0.5s ;
+                    }
+                    a:hover{
+                        background-color: white;
+                    }
+                    i{
+                        text-align: center;
+                        height: 40px;
+                        width: 40px;
+                        color:white;
+                        background: none;
+                        transition: all 0.5s;
+                    }
+                    i:hover{
+                        color:black;
+                        
+                    }
+
+                }
+    }
+}

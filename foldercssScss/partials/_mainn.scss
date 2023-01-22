@@ -4,6 +4,7 @@ section {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
 }
 
 article {
@@ -68,6 +69,7 @@ article {
             color: white;
             bottom: 20px;
             right: 10px;
+            border: solid white 2px;
             &:hover{
                 border:2px solid rgb(71, 1, 192);
             }
@@ -83,10 +85,10 @@ article {
     padding: 10px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
     .cart-contimg{
         justify-content: center;
-        width: 150px;
+        width: auto;
         height: 150px;
         margin: 5px;
         &-img{
@@ -95,5 +97,31 @@ article {
             width: auto;
             border-radius: 10px;
         }
+    }
+}
+
+.categoriesfilter{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    color: white;
+    background-color: #212529;
+    padding: 10px;
+    margin: 5px 0px 5px 5px;
+    
+    &-buttons{
+        background: none;
+        color: white;
+        margin-top: 5px;
+        border: 0px;
+        text-decoration: underline;
+    }
+}
+
+.botonescart{
+    .masymenos{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
