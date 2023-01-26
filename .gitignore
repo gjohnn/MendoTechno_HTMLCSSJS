@@ -1,0 +1,5 @@
+.vscode
+node_modules
+foldercssScss
+package-lock.json
+package.json
