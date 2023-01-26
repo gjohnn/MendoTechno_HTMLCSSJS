@@ -1,5 +1,4 @@
 //al cart
-
 function addtocart(id) {
   Toastify({
     text: "Producto agregado",
@@ -23,12 +22,16 @@ function addtocart(id) {
       }
     });
   } else {
-    fetch("../data/data.json")
+    const url = "../data/data.json";
+    fetch(url)
       .then((response) => response.json())
       .then((prodarray) => {
         const item = prodarray.find((prod) => prod.id === id);
+        console.log(item);
+        console.log(cart);
         cart.push(item);
-      });
+        showcart();
+    });
   }
   showcart();
 }

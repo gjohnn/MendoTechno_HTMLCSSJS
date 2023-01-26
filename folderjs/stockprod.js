@@ -1,9 +1,12 @@
-fetch("../data/data.json")
+const url = "../data/data.json"
+fetch(url)
 .then((response)=>response.json())
-.then((prodarray)=>{
-    show(prodarray);
+.then((data)=>{
+    mostrarprods(data);
 }
 )
+
+
 class Producto {
     constructor(id, marca, nombre, cat, precio, prodimage, cant) {
         this.id = id;
@@ -19,18 +22,20 @@ class Producto {
     }
 }
 
-function show(msj) {
-    console.log(msj);
+function filtrado (arr,cate){
+    arr.filter(item => item.cat == cate);
 }
-
 let cart = []
 document.addEventListener("DOMContentLoaded",()=>{
     cart = JSON.parse(localStorage.getItem("cart"))||[]
     showcart();
 })
 
-
-/*const prodarray = [
+function guardarcart(){
+localStorage.setItem("cart", JSON.stringify(cart))
+}
+/*
+const prodarray = [
     {id:1, marca: "ASUS PRIME", nombre:"B560M-A Intel 11ª 10ª LGA1200", cat:"MOTHERBOARD", precio : 50000, prodimage: "prod1.png", cant : 1},
     {id:2, marca:"GIGABYTE", nombre:"A520M-H AMD AM4", cat:"MOTHERBOARD", precio :95000, prodimage:"prod2.png", cant : 1},
     {id:3, marca:"GIGABYTE", nombre:"B450 AORUS M AMD AM4", cat:"MOTHERBOARD", precio:110000, prodimage:"prod3.png", cant:1},
@@ -44,13 +49,10 @@ document.addEventListener("DOMContentLoaded",()=>{
     {id:11, marca:"ASROCK", nombre:"AMD Radeon RX 6800 XT 16GB", cat:"GPU", precio:155000, prodimage:"prod11.png", cant:1},
     {id:12, marca:"MSI", nombre:"Radeon RX 6600 XT MECH 2X 8G OC", cat:"GPU", precio:100000, prodimage:"prod12.png", cant:1}
 ];
+*/
 
-
-let prodarraymother = prodarray.filter(item => item.cat == "MOTHERBOARD");
+/*let prodarraymother = prodarray.filter(item => item.cat == "MOTHERBOARD");
 let prodarrayram = prodarray.filter(item => item.cat == "MEMORIA RAM");
 let prodarraygpu = prodarray.filter(item => item.cat == "GPU");*/
 
-function guardarcart(){
-localStorage.setItem("cart", JSON.stringify(cart))
-}
 
